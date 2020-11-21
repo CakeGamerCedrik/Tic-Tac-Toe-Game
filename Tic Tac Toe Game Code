@@ -1,0 +1,349 @@
+using System;
+using System.Security.Authentication;
+using System.Xml.Schema;
+
+namespace Program
+{
+
+
+    class Board
+    {
+
+        public String one = "1";
+        public String two = "2";
+        public String three = "3";
+        public String four = "4";
+        public String five = "5";
+        public String six = "6";
+        public String seven = "7";
+        public String eight = "8";
+        public String nine = "9";
+        public String Input;
+        public String PlayerTurn = "X";
+        public bool oWin;
+        public bool xWin;
+
+        public void CheckInput()
+        {
+            if (PlayerTurn == "X")
+            {
+                if (Input == "1" && one != "O")
+                {
+                    one = "X";
+                }
+                if (Input == "2" && two != "O")
+                {
+                    two = "X";
+                }
+                if (Input == "3" && three != "O")
+                {
+                    three = "X";
+                }
+                if (Input == "4" && four != "O")
+                {
+                    four = "X";
+                }
+                if (Input == "5" && five != "O")
+                {
+                    five = "X";
+                }
+                if (Input == "6" && six != "O")
+                {
+                    six = "X";
+                }
+                if (Input == "7" && seven != "O")
+                {
+                    seven = "X";
+                }
+                if (Input == "8" && eight != "O")
+                {
+                    eight = "X";
+                }
+                if (Input == "9" && nine != "O")
+                {
+                    nine = "X";
+                }
+            }
+
+
+            if (PlayerTurn == "O")
+            {
+                if (Input == "1" && one != "X")
+                {
+                    one = "O";
+                }
+                if (Input == "2" && two != "X")
+                {
+                    two = "O";
+                }
+                if (Input == "3" && three != "X")
+                {
+                    three = "O";
+                }
+                if (Input == "4" && four != "X")
+                {
+                    four = "O";
+                }
+                if (Input == "5" && five != "X")
+                {
+                    five = "O";
+                }
+                if (Input == "6" && six != "X")
+                {
+                    six = "O";
+                }
+                if (Input == "7" && seven != "X")
+                {
+                    seven = "O";
+                }
+                if (Input == "8" && eight != "X")
+                {
+                    eight = "O";
+                }
+                if (Input == "9" && nine != "X")
+                {
+                    nine = "O";
+                }
+            }
+
+
+
+
+
+
+        }
+
+        public void CheckWinX()
+        {
+
+            if (one == "X" && two == "X" && three == "X")
+            {
+                xWin = true;
+            }
+            if (four == "X" && five == "X" && six == "X")
+            {
+                xWin = true;
+            }
+            if (seven == "X" && eight == "X" && nine == "X")
+            {
+                xWin = true;
+            }
+
+            if (one == "X" && four == "X" && seven == "X")
+            {
+                xWin = true;
+            }
+
+            if (two == "X" && five == "X" && eight == "X")
+            {
+                xWin = true;
+            }
+
+            if (three == "X" && six == "X" && nine == "X")
+            {
+                xWin = true;
+            }
+
+            if (one == "X" && five == "X" && nine == "X")
+            {
+                xWin = true;
+            }
+
+            if (three == "X" && five == "X" && seven == "X")
+            {
+                xWin = true;
+            }
+
+            if (xWin == true)
+            {
+                Console.WriteLine("Congratulations! Player 1 Won");
+                System.Environment.Exit(0);
+            }
+        }
+
+
+        public void CheckWinO()
+        {
+
+            if (one == "O" && two == "O" && three == "O")
+            {
+                oWin = true;
+            }
+            if (four == "O" && five == "O" && six == "O")
+            {
+                oWin = true;
+            }
+            if (seven == "O" && eight == "O" && nine == "O")
+            {
+                oWin = true;
+            }
+
+            if (one == "O" && four == "O" && seven == "O")
+            {
+                oWin = true;
+            }
+
+            if (two == "O" && five == "O" && eight == "O")
+            {
+                oWin = true;
+            }
+
+            if (three == "O" && six == "O" && nine == "O")
+            {
+                oWin = true;
+            }
+
+            if (one == "O" && five == "O" && nine == "O")
+            {
+                oWin = true;
+            }
+
+            if (three == "O" && five == "O" && seven == "O")
+            {
+                oWin = true;
+            }
+
+            if (oWin == true)
+            {
+                Console.WriteLine("Congratulations! Player 2 Won");
+                System.Environment.Exit(0);
+            }
+        }
+
+     
+
+
+    public void ShowBoard()
+        {
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("     |     |      ");
+            Console.WriteLine("  " + one + "  |  " + two + "  |  " + three);
+            Console.WriteLine("_____|_____|_____ ");
+            Console.WriteLine("     |     |      ");
+            Console.WriteLine("  " + four + "  |  " + five + "  |  " + six);
+            Console.WriteLine("_____|_____|_____ ");
+            Console.WriteLine("     |     |      ");
+            Console.WriteLine("  " + seven + "  |  " + eight + "  |  " + nine);
+            Console.WriteLine("     |     |      ");
+
+            
+        }
+
+        
+   }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //Variables
+
+            
+            int a;
+            String answer3 = "n";
+            
+
+
+            //Code
+            
+            Board gameBoard = new Board();
+
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Do you want to skip the intro? y/other key");
+            String answer1 = Console.ReadLine();
+            Console.WriteLine("Do you want to confirm your answers? y/other key");
+            String answer2 = Console.ReadLine();
+
+            if (answer1 != "y")
+            {
+
+                Console.WriteLine("Hello, lets play Tic Tac Toe");
+                System.Threading.Thread.Sleep(5000);
+                Console.WriteLine("I think you already know the rules");
+                System.Threading.Thread.Sleep(5000);
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("You can also skip your turn by just typing enter or another random number or a letter");
+                System.Threading.Thread.Sleep(5000);
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("If you try to mark a spot twice or try to steal another one... Well lets say you are going to waste your turn");
+                System.Threading.Thread.Sleep(5000);
+                Console.Clear();
+                Console.WriteLine("Now lets start");
+            }
+            gameBoard.ShowBoard();
+
+
+            do
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+
+
+                if (gameBoard.PlayerTurn == "X")
+                {
+
+                    do
+                    {
+
+
+
+                        Console.WriteLine("Player 1 tell me which field you want to take!");
+                        gameBoard.Input = Console.ReadLine();
+
+                        if (answer2 == "y")
+                        {
+                            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                            Console.WriteLine("Are you sure you want to do this?");
+                            answer3 = Console.ReadLine();
+
+                            if (answer3 == "y")
+                            {
+                                gameBoard.CheckInput();
+                                gameBoard.ShowBoard();
+                                gameBoard.CheckWinX();
+
+                                gameBoard.PlayerTurn = "O";
+                            }
+                        }
+
+
+                    } while (answer3 != "y");
+                }
+
+
+
+
+                else if (gameBoard.PlayerTurn == "O")
+                {
+
+                    do
+                    {
+
+
+
+                        Console.WriteLine("Player 2 tell me which field you want to take!");
+                        gameBoard.Input = Console.ReadLine();
+
+                        if (answer2 == "y")
+                        {
+                            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                            Console.WriteLine("Are you sure you want to do this?");
+                            answer3 = Console.ReadLine();
+
+                            if (answer3 == "y")
+                            {
+                                gameBoard.CheckInput();
+                                gameBoard.ShowBoard();
+                                gameBoard.CheckWinO();
+
+                                gameBoard.PlayerTurn = "X";
+                            }
+                        }
+
+
+                    } while (answer3 != "y");
+
+                }
+
+            } while (gameBoard.oWin != true && gameBoard.xWin != true);
+        }
+    }
+}
