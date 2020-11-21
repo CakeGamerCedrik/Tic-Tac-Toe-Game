@@ -210,10 +210,10 @@ namespace Program
             }
         }
 
-     
 
 
-    public void ShowBoard()
+
+        public void ShowBoard()
         {
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("     |     |      ");
@@ -226,25 +226,25 @@ namespace Program
             Console.WriteLine("  " + seven + "  |  " + eight + "  |  " + nine);
             Console.WriteLine("     |     |      ");
 
-            
+
         }
 
-        
-   }
+
+    }
     class Program
     {
         static void Main(string[] args)
         {
             //Variables
 
-            
+
             int a;
             String answer3 = "n";
-            
+
 
 
             //Code
-            
+
             Board gameBoard = new Board();
 
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -280,67 +280,96 @@ namespace Program
                 if (gameBoard.PlayerTurn == "X")
                 {
 
-                    do
+                    if (answer2 == "y")
                     {
+                        do
+                        {
+                            Console.WriteLine("Player 1 tell me which field you want to take!");
+                            gameBoard.Input = Console.ReadLine();
+
+                            if (answer2 == "y")
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                                Console.WriteLine("Are you sure you want to do this?");
+                                answer3 = Console.ReadLine();
+
+                                if (answer3 == "y")
+                                {
+                                    gameBoard.CheckInput();
+                                    gameBoard.ShowBoard();
+                                    gameBoard.CheckWinX();
+
+                                    gameBoard.PlayerTurn = "O";
+                                }
+                            }
+                        } while (answer3 != "y");
+                    }
+                    else
 
 
-
+                    {
                         Console.WriteLine("Player 1 tell me which field you want to take!");
                         gameBoard.Input = Console.ReadLine();
 
-                        if (answer2 == "y")
-                        {
-                            Console.ForegroundColor = ConsoleColor.DarkMagenta;
-                            Console.WriteLine("Are you sure you want to do this?");
-                            answer3 = Console.ReadLine();
+                        gameBoard.CheckInput();
+                        gameBoard.ShowBoard();
+                        gameBoard.CheckWinX();
 
-                            if (answer3 == "y")
-                            {
-                                gameBoard.CheckInput();
-                                gameBoard.ShowBoard();
-                                gameBoard.CheckWinX();
+                        gameBoard.PlayerTurn = "O";
 
-                                gameBoard.PlayerTurn = "O";
-                            }
-                        }
-
-
-                    } while (answer3 != "y");
+                    }
                 }
 
 
 
 
-                else if (gameBoard.PlayerTurn == "O")
+                if (gameBoard.PlayerTurn == "O")
                 {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
 
-                    do
+
+                    if (gameBoard.PlayerTurn == "O")
                     {
-
-
-
-                        Console.WriteLine("Player 2 tell me which field you want to take!");
-                        gameBoard.Input = Console.ReadLine();
 
                         if (answer2 == "y")
                         {
-                            Console.ForegroundColor = ConsoleColor.DarkMagenta;
-                            Console.WriteLine("Are you sure you want to do this?");
-                            answer3 = Console.ReadLine();
-
-                            if (answer3 == "y")
+                            do
                             {
-                                gameBoard.CheckInput();
-                                gameBoard.ShowBoard();
-                                gameBoard.CheckWinO();
+                                Console.WriteLine("Player 2 tell me which field you want to take!");
+                                gameBoard.Input = Console.ReadLine();
 
-                                gameBoard.PlayerTurn = "X";
-                            }
+                                if (answer2 == "y")
+                                {
+                                    Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                                    Console.WriteLine("Are you sure you want to do this?");
+                                    answer3 = Console.ReadLine();
+
+                                    if (answer3 == "y")
+                                    {
+                                        gameBoard.CheckInput();
+                                        gameBoard.ShowBoard();
+                                        gameBoard.CheckWinO();
+
+                                        gameBoard.PlayerTurn = "X";
+                                    }
+                                }
+                            } while (answer3 != "y");
                         }
+                        else
 
 
-                    } while (answer3 != "y");
+                        {
+                            Console.WriteLine("Player 2 tell me which field you want to take!");
+                            gameBoard.Input = Console.ReadLine();
 
+                            gameBoard.CheckInput();
+                            gameBoard.ShowBoard();
+                            gameBoard.CheckWinO();
+
+                            gameBoard.PlayerTurn = "X";
+
+                        }
+                    }
                 }
 
             } while (gameBoard.oWin != true && gameBoard.xWin != true);
